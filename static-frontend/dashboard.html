@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>My Courses — OCMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <div id="app">
+    <header class="nav-wrap">
+      <nav class="navbar container">
+        <a class="logo" href="index.html">OCMS<span class="accent">.</span></a>
+        <button id="nav-toggle" class="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="index.html#home">Home</a></li>
+          <li><a href="index.html#features">Features</a></li>
+          <li><a href="index.html#projects">Courses</a></li>
+          <li><a href="dashboard.html">My Courses</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div id="userMenu" class="user-menu">
+            <span id="userName" class="muted">Account</span>
+            <button id="btnLogout" class="btn ghost">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Dashboard Hero -->
+      <section class="dashboard-hero">
+        <div class="container">
+          <h1>My Learning Journey</h1>
+          <p class="section-sub">Track your progress and continue learning</p>
+        </div>
+      </section>
+
+      <!-- Enrollments -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Your Courses</h2>
+          <div id="myCoursesGrid" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <!-- Course Reviews -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Your Reviews</h2>
+          <div id="myReviewsList" class="reviews-list"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> OCMS. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script src="js/dashboard.js" defer></script>
+</body>
+</html>

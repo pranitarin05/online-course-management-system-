@@ -1,0 +1,88 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Course Detail — OCMS</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <div id="app">
+    <header class="nav-wrap">
+      <nav class="navbar container">
+        <a class="logo" href="/">OCMS<span class="accent">.</span></a>
+        <button id="nav-toggle" class="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="/#home">Home</a></li>
+          <li><a href="/#features">Features</a></li>
+          <li><a href="/#projects">Courses</a></li>
+          <li><a href="/dashboard/">My Courses</a></li>
+          <li><a href="/#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <div id="userMenu" class="user-menu">
+            <span id="userName" class="muted">Account</span>
+            <a class="btn ghost" href="/dashboard/">My Courses</a>
+            <button id="btnLogout" class="btn ghost">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Course Cover -->
+      <section class="course-hero">
+        <div class="container">
+          <div id="courseDetail"></div>
+        </div>
+      </section>
+
+      <!-- Course Meta -->
+      <section class="section">
+        <div class="container">
+          <div id="courseMeta" class="course-meta"></div>
+        </div>
+      </section>
+
+      <!-- Enrollment / Reviews -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Course Reviews</h2>
+          <div id="courseReviews" class="reviews-list"></div>
+          <div id="noReviews" style="display:none;color:var(--muted);">No reviews yet.</div>
+        </div>
+      </section>
+
+      <!-- Write Review -->
+      <section class="section">
+        <div class="container">
+          <h2 class="section-title">Leave a Review</h2>
+          <form id="reviewForm" class="contact-form glass">
+            <label>Rating (1-5)<input type="number" id="rating" min="1" max="5" required></label>
+            <label>Your Review<textarea id="reviewText" rows="4" required minlength="10"></textarea></label>
+            <div class="form-actions"><button class="btn primary" type="submit">Submit Review</button><div id="reviewMsg" class="form-msg"></div></div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> OCMS. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>const COURSE_ID = {{ course_id }};</script>
+  <script src="{% static 'js/course-detail.js' %}" defer></script>
+</body>
+</html>

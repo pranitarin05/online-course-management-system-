@@ -1,0 +1,226 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>OCMS — Online Course Management</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Styles from static folder -->
+  <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+</head>
+<body>
+  <div id="app">
+    <header class="nav-wrap">
+      <nav class="navbar container">
+        <a class="logo" href="/">OCMS<span class="accent">.</span></a>
+        <button id="nav-toggle" class="hamburger" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#features">Features</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Courses</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="nav-actions">
+          <button id="btnLogin" class="btn ghost">Login</button>
+          <button id="btnRegister" class="btn ghost">Sign Up</button>
+          <div id="userMenu" class="user-menu" style="display:none;">
+            <span id="userName" class="muted">User</span>
+            <a class="btn ghost" href="/dashboard/">My Courses</a>
+            <button id="btnLogout" class="btn ghost">Logout</button>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section id="home" class="hero">
+        <div class="hero-bg" aria-hidden="true"></div>
+        <div class="container hero-inner">
+          <div class="hero-content">
+            <h1 class="headline">Build skills. Launch careers. Learn on your terms.</h1>
+            <p class="sub">Premium online courses, expert instructors, and on-demand learning — powered by OCMS.</p>
+            <div class="cta-row">
+              <a class="btn primary" href="#projects">Browse Courses</a>
+              <a class="btn ghost" href="#contact">Get In Touch</a>
+            </div>
+            <div class="hero-stats">
+              <div><strong id="stat-courses">—</strong><span>Courses</span></div>
+              <div><strong id="stat-students">—</strong><span>Students</span></div>
+              <div><strong id="stat-reviews">—</strong><span>Reviews</span></div>
+            </div>
+          </div>
+          <div class="hero-art">
+            <div class="card glass">
+              <img src="{% static 'assets/cover-sample.jpg' %}" alt="sample course art" />
+              <div class="card-body">
+                <h4>Intro to Modern Web</h4>
+                <p>Responsive design, accessibility, and vanilla JavaScript.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="section">
+        <div class="container">
+          <h2 class="section-title">Why OCMS?</h2>
+          <p class="section-sub">A modern platform built for learners and creators.</p>
+          <div class="features-grid">
+            <article class="feature-card glass">
+              <div class="icon">🚀</div>
+              <h3>Fast Onboarding</h3>
+              <p>Sign up and start learning within minutes.</p>
+            </article>
+            <article class="feature-card glass">
+              <div class="icon">🎓</div>
+              <h3>Expert Instructors</h3>
+              <p>Industry pros design each course with practical projects.</p>
+            </article>
+            <article class="feature-card glass">
+              <div class="icon">🔒</div>
+              <h3>Secure & Reliable</h3>
+              <p>JWT auth and a robust backend you already built.</p>
+            </article>
+            <article class="feature-card glass">
+              <div class="icon">⚡</div>
+              <h3>Offline Support</h3>
+              <p>Downloadable content and fast caching for learners.</p>
+            </article>
+            <article class="feature-card glass">
+              <div class="icon">📈</div>
+              <h3>Progress Tracking</h3>
+              <p>Follow your learning journey with leaderboards and stats.</p>
+            </article>
+            <article class="feature-card glass">
+              <div class="icon">🤝</div>
+              <h3>Community</h3>
+              <p>Peer reviews and discussion forums to stay engaged.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- About -->
+      <section id="about" class="section split">
+        <div class="container split-inner">
+          <div class="split-media glass">
+            <img src="{% static 'assets/team.jpg' %}" alt="Team" />
+          </div>
+          <div class="split-text">
+            <h2>About OCMS</h2>
+            <p>OCMS is an opinionated online course management system focused on delivering quality content with a delightful user experience. We combine a robust Django backend with a beautiful frontend interface.</p>
+            <ul class="about-list">
+              <li>Instructor dashboards</li>
+              <li>Rich course management</li>
+              <li>Student analytics</li>
+            </ul>
+            <a class="btn primary" href="#projects">See Courses</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Projects / Courses -->
+      <section id="projects" class="section">
+        <div class="container">
+          <h2 class="section-title">Featured Courses</h2>
+          <div id="coursesGrid" class="projects-grid"></div>
+        </div>
+      </section>
+
+      <!-- Testimonials -->
+      <section id="testimonials" class="section">
+        <div class="container">
+          <h2 class="section-title">What learners say</h2>
+          <div class="carousel">
+            <button class="carousel-btn prev" aria-label="Previous">‹</button>
+            <div class="carousel-track" id="testimonialsTrack"></div>
+            <button class="carousel-btn next" aria-label="Next">›</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="section contact-section">
+        <div class="container">
+          <h2 class="section-title">Contact Us</h2>
+          <div class="contact-grid">
+            <form id="contactForm" class="contact-form glass" novalidate>
+              <label>Full Name<input type="text" name="name" id="name" required minlength="2"></label>
+              <label>Email<input type="email" name="email" id="email" required></label>
+              <label>Message<textarea name="message" id="message" rows="5" required minlength="10"></textarea></label>
+              <div class="form-actions">
+                <button type="submit" class="btn primary">Send Message</button>
+                <div id="formMsg" class="form-msg"></div>
+              </div>
+            </form>
+
+            <div class="contact-info glass">
+              <h3>Say hello</h3>
+              <p>support@ocms.example</p>
+              <p>Follow us on social for updates.</p>
+              <div class="social-row">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">GitHub</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div>© <span id="year"></span> OCMS. All rights reserved.</div>
+        <div class="footer-links">
+          <a href="#">Privacy</a>
+          <a href="#">Terms</a>
+          <a href="#">Contact</a>
+        </div>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Login Modal -->
+  <div id="loginModal" class="modal" aria-hidden="true">
+    <div class="modal-panel glass">
+      <button id="closeModal" class="modal-close" aria-label="Close">×</button>
+      <h3>Sign in</h3>
+      <form id="loginForm">
+        <label>Username<input type="text" id="loginUser" required></label>
+        <label>Password<input type="password" id="loginPass" required></label>
+        <div class="form-actions"><button class="btn primary" type="submit">Sign in</button><div id="loginMsg" class="form-msg"></div></div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Register Modal -->
+  <div id="registerModal" class="modal" aria-hidden="true">
+    <div class="modal-panel glass">
+      <button id="closeRegisterModal" class="modal-close" aria-label="Close">×</button>
+      <h3>Create Account</h3>
+      <form id="registerForm">
+        <label>Username<input type="text" id="regUser" required></label>
+        <label>Email<input type="email" id="regEmail" required></label>
+        <label>Password<input type="password" id="regPass" required></label>
+        <label>Role<select id="regRole"><option value="student">Student</option><option value="instructor">Instructor</option></select></label>
+        <label>Phone<input type="tel" id="regPhone"></label>
+        <div class="form-actions"><button class="btn primary" type="submit">Sign Up</button><div id="registerMsg" class="form-msg"></div></div>
+      </form>
+    </div>
+  </div>
+
+  <script src="{% static 'js/app.js' %}" defer></script>
+</body>
+</html>
